@@ -41,3 +41,5 @@ def find_first_unpair_closed_par(str_: str) -> int:
                 stack.pop(-1)
         elif i == "(":
             stack.append(i)
+
+# scirnk xjbt
