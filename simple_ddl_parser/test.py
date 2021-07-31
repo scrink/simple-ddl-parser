@@ -1,18 +1,13 @@
-from ddl_parser import DDLParser
+import re
+from ddl_parser import DDLParser as dcl
 
-ddl = """
-create table if not exists imods.ods_imp_app_tracking_info
-(
-row_id string ,
-event_name      string comment '傻逼',
-trigger_type    string ,
-channel_user    string ,
-key_desc        string ,
-etl_load_time  string
-)
-    """
+s = '''create table if not exists imods.ods_imbs_bp_data_dev ( idsite string comment '应用id', server_time string comment '操作的日期时间') comment "埋点系统es总表数据" partitioned by (dt string) ;'''
 
-result = DDLParser(ddl).run()
+
+reg = re.compile(r'\s+')
+ddl = reg.sub(repl=' ',string=s)
+ddl = ddl.lower().replace('\"','\'')
+print(ddl)
+result = dcl(ddl).run()
 print(result)
-# print('\\u50bb\\u903c'.encode().decode('unicode-escape'))
-
+print('\\u5e94\\u7528id'.encode().decode('unicode-escape'))
