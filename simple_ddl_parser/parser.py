@@ -22,7 +22,7 @@ class Parser:
     def __init__(self, content) -> None:
         """ init parser for file """
         self.tables = []
-        self.data = content.encode("unicode_escape")
+        self.data = content.encode("utf-8")
         self.paren_count = 0
         self.lexer = lex.lex(object=self, debug=False)
         self.yacc = yacc.yacc(module=self, debug=False)
